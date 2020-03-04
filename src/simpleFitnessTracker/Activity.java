@@ -21,7 +21,7 @@ public abstract class Activity {
 
     public ActivityResult calculateActivityResult(float oldHeartRate) {
         return new ActivityResult(calculateBurntCaloriesIncrease(),
-                calculateHeartRateIncrease(oldHeartRate));
+                calculateHeartRateIncrease(oldHeartRate), this.getClass().getName());
     }
 
     private int calculateBurntCaloriesIncrease() {

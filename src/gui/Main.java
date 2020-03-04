@@ -29,6 +29,11 @@ public class Main extends Application {
         calculator.addActivity(new Running(9));
 
         calculator.addActivity(new StrengthTraining(5));
+
+        for (ActivityResult sortActivityResult : calculator.sortActivityResults()) {
+            System.out.println(sortActivityResult.getBurntCaloriesIncrease() + " " + sortActivityResult.getHeartRateIncrease() + " " + sortActivityResult.getActivityName());
+
+        }
         System.out.println(calculator.getBurntCalories() + "   " + calculator.getHeartRate());
 
 
