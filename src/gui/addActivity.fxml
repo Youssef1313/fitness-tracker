@@ -18,5 +18,5 @@
         <RadioButton fx:id="kickBoxing" text="Kick Boxing" toggleGroup="$activities"/>
         <RadioButton fx:id="strengthTraining" text="Strength Training" toggleGroup="$activities"/>
     </VBox>
-    <Button style="-fx-padding: 10 50" text="Add" />
+    <Button style="-fx-padding: 10 50" text="Add" onMouseClicked="#add"/>
 </VBox>

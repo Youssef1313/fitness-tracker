@@ -7,6 +7,7 @@ public abstract class Activity {
         private final String activityName;
 
         public Activity(int burntCaloriesPerMinute, float heartRateIncreasePerMinute, int timeInMinutes) {
+            // TODO: throw exception on negative inputs.
             this.burntCaloriesPerMinute = burntCaloriesPerMinute;
             this.heartRateIncreasePerMinute = heartRateIncreasePerMinute;
             this.timeInMinutes = timeInMinutes;

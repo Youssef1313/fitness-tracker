@@ -6,6 +6,7 @@ public class Calculator {
     private ArrayList<ActivityResult> activityResults;
     private float heartRate;
     private int burntCalories;
+    private Activity lastAddedActivity;
 
     public Calculator() {
         this.activityResults = new ArrayList<ActivityResult>();
@@ -33,6 +34,7 @@ public class Calculator {
             previousActivityResult.setBurntCaloriesIncrease(previousActivityResult.getBurntCaloriesIncrease() + result.getBurntCaloriesIncrease());
             previousActivityResult.setHeartRateIncrease(previousActivityResult.getHeartRateIncrease() + result.getHeartRateIncrease());
         }
+        lastAddedActivity = activity;
 
     }
 
@@ -54,4 +56,7 @@ public class Calculator {
         return null;
     }
 
+    public Activity getLastAddedActivity() {
+        return lastAddedActivity;
+    }
 }
