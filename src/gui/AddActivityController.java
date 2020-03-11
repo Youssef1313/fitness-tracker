@@ -2,6 +2,7 @@ package gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import simpleFitnessTracker.*;
@@ -17,6 +18,8 @@ public class AddActivityController {
     private RadioButton kickBoxing;
     @FXML
     private RadioButton strengthTraining;
+    @FXML
+    private TextField timeField;
 
     private Calculator calculator;
 
@@ -25,22 +28,35 @@ public class AddActivityController {
     }
 
     public void add(MouseEvent mouseEvent) {
+        int minutes = convertStringToInt(timeField.getText());
+        if (minutes <= 0) return;
+
         if (swimming.isSelected()) {
-            calculator.addActivity(new Swimming(5));
+            calculator.addActivity(new Swimming(minutes));
+        }
+        else if (running.isSelected()) {
+            calculator.addActivity(new Running(minutes));
         }
 
-        if (running.isSelected()) {
-            calculator.addActivity(new Running(5));
+        else if (kickBoxing.isSelected()) {
+            calculator.addActivity(new KickBoxing(minutes));
         }
-
-        if (kickBoxing.isSelected()) {
-            calculator.addActivity(new KickBoxing(5));
+        else if (strengthTraining.isSelected()) {
+            calculator.addActivity(new StrengthTraining(minutes));
         }
-
-        if (strengthTraining.isSelected()) {
-            calculator.addActivity(new StrengthTraining(5));
+        else {
+            return;
         }
-        ((Stage)swimming.getScene().getWindow()).close();
+        ((Stage) swimming.getScene().getWindow()).close();
 
+    }
+
+    private int convertStringToInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        }
+        catch (Exception ex) {
+            return -1;
+        }
     }
 }
