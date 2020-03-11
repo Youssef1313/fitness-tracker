@@ -22,33 +22,37 @@ public class AddActivityController {
     private TextField timeField;
 
     private Calculator calculator;
+    private Activity lastAddedActivity;
 
     public AddActivityController(Calculator calculator) {
         this.calculator = calculator;
     }
 
     public void add(MouseEvent mouseEvent) {
-        int minutes = convertStringToInt(timeField.getText());
-        if (minutes <= 0) return;
-
-        if (swimming.isSelected()) {
-            calculator.addActivity(new Swimming(minutes));
-        }
-        else if (running.isSelected()) {
-            calculator.addActivity(new Running(minutes));
-        }
-
-        else if (kickBoxing.isSelected()) {
-            calculator.addActivity(new KickBoxing(minutes));
-        }
-        else if (strengthTraining.isSelected()) {
-            calculator.addActivity(new StrengthTraining(minutes));
-        }
-        else {
-            return;
-        }
+        lastAddedActivity = getActivityToAdd();
+        if (lastAddedActivity == null) return;
+        calculator.addActivity(lastAddedActivity);
         ((Stage) swimming.getScene().getWindow()).close();
 
+    }
+
+    private Activity getActivityToAdd() {
+        int minutes = convertStringToInt(timeField.getText());
+        if (minutes <= 0) return null;
+
+        if (swimming.isSelected()) {
+            return new Swimming(minutes);
+        }
+        if (running.isSelected()) {
+            return new Running(minutes);
+        }
+        if (kickBoxing.isSelected()) {
+            return new KickBoxing(minutes);
+        }
+        if (strengthTraining.isSelected()) {
+            return new StrengthTraining(minutes);
+        }
+        return null;
     }
 
     private int convertStringToInt(String input) {
@@ -58,5 +62,9 @@ public class AddActivityController {
         catch (Exception ex) {
             return -1;
         }
+    }
+
+    public Activity getLastAddedActivity() {
+        return lastAddedActivity;
     }
 }

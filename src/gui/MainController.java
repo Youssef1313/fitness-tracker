@@ -35,7 +35,8 @@ public class MainController {
 
     public void addActivityClicked() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("addActivity.fxml"));
-        loader.setController(new AddActivityController(calculator));
+        AddActivityController controller = new AddActivityController(calculator);
+        loader.setController(controller);
         var addActivityStage = new Stage();
         addActivityStage.setTitle("Fitness Tracker - Add Activity");
         addActivityStage.setScene(new Scene(loader.load()));
@@ -43,7 +44,7 @@ public class MainController {
         addActivityStage.initModality(Modality.APPLICATION_MODAL);
         addActivityStage.showAndWait();
 
-        Activity lastAddedActivity = calculator.getLastAddedActivity();
+        Activity lastAddedActivity = controller.getLastAddedActivity();
         if (lastAddedActivity == null) return;
         activityList.getItems().add(lastAddedActivity);
         refreshData();
