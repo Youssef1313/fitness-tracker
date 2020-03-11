@@ -5,20 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import simpleFitnessTracker.*;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Fitness Tracker - Main Window");
+        primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) {/*
         var calculator = new Calculator();
         calculator.addActivity(new  Swimming(5));
 
@@ -37,8 +36,10 @@ public class Main extends Application {
         System.out.println(calculator.getBurntCalories() + "   " + calculator.getHeartRate());
 
 
-
+*/
         launch(args);
 
     }
+
+
 }
