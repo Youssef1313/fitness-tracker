@@ -49,7 +49,15 @@ public class MainController {
         refreshData();
     }
 
-    public void sortClicked(MouseEvent mouseEvent) {
+    public void sortClicked(MouseEvent mouseEvent) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sortedActivities.fxml"));
+        loader.setController(new SortedActivitiesController(calculator.sortActivityResults()));
+        var addActivityStage = new Stage();
+        addActivityStage.setTitle("Fitness Tracker - Sorted activities");
+        addActivityStage.setScene(new Scene(loader.load()));
+        addActivityStage.setResizable(false);
+        addActivityStage.initModality(Modality.APPLICATION_MODAL);
+        addActivityStage.showAndWait();
 
     }
 }
